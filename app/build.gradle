@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.huawei.agconnect'
 }
 
 android {
@@ -45,4 +46,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+
+    implementation 'com.huawei.hms:ml-computer-voice-tts:3.4.0.302'
+    implementation 'com.huawei.agconnect:agconnect-crash:1.6.5.300'
+    implementation 'com.huawei.agconnect:agconnect-apms:1.5.2.307'
 }

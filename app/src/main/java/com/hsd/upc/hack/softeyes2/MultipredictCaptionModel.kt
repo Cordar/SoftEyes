@@ -13,7 +13,8 @@ data class MultipredictCaptionModel(
 ) {
 
     override fun toString(): String {
-        return response?.solutions?.caption?.description ?: ""
+        return response?.solutions?.roomType?.topPrediction?.label ?:
+        response?.solutions?.caption?.description ?: ""
     }
 
     data class Response(var solutions: Solutions? = null) {
@@ -25,13 +26,21 @@ data class MultipredictCaptionModel(
             var features: ReFeaturesV3? = null,
             var caption: Caption? = null
         ) {
-            data class ReRoomtypeGlobalV2(var predictions: List<Prediction>? = null) {
+            data class ReRoomtypeGlobalV2(
+                var predictions: List<Prediction>? = null,
+                @SerializedName("top_prediction")
+                var topPrediction: TopPrediction
+            ) {
                 data class Prediction(
                     var label: String? = null,
                     var confidence: Double? = null
                 ) {
 
                 }
+                data class TopPrediction(
+                    var label: String? = null,
+                    var confidence: Double? = null
+                )
             }
 
             data class ReFeaturesV3(var detections: List<Detection>? = null) {
